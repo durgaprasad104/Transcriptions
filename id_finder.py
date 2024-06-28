@@ -2,31 +2,37 @@ import streamlit as st
 import re
 
 def extract_youtube_video_id(url):
-    # Regular expression to match YouTube video URLs
-    regex = (
+    # Regular expression to match YouTube video URLs, including Shorts
+    video_id = None
+    regex_shorts = r'(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})'
+    regex_video = (
         r'(?:https?:\/\/)?(?:www\.)?'
         '(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|'
         'youtu\.be\/)([a-zA-Z0-9_-]{11})'
     )
 
-    match = re.search(regex, url)
-    if match:
-        return match.group(1)
-    else:
-        return None
+    match_shorts = re.search(regex_shorts, url)
+    match_video = re.search(regex_video, url)
+
+    if match_shorts:
+        video_id = match_shorts.group(1)
+    elif match_video:
+        video_id = match_video.group(1)
+
+    return video_id
 
 def main():
-    st.title('Youtube Video ID Finder')
+    st.title('YouTube Video ID Extractor')
 
     # Input field for the URL
     url = st.text_input('Enter a YouTube URL')
 
     # Button to trigger video ID extraction
-    if st.button('Get video ID'):
+    if st.button('Get Video ID'):
         if url:
             video_id = extract_youtube_video_id(url)
             if video_id:
-                st.success(f' here is your ID : {video_id}')
+                st.success(f'The extracted video ID is: {video_id}')
             else:
                 st.warning('Please enter a valid YouTube URL')
 
