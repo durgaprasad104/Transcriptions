@@ -1,5 +1,6 @@
 import streamlit as st
 import re
+import pyperclip  # This package helps in copying text to clipboard
 
 def extract_youtube_video_id(url):
     # Regular expression to match YouTube video URLs, including Shorts
@@ -33,6 +34,10 @@ def main():
             video_id = extract_youtube_video_id(url)
             if video_id:
                 st.success(f'The extracted video ID is: {video_id}')
+                # Button to copy video ID to clipboard
+                if st.button('Copy Video ID'):
+                    pyperclip.copy(video_id)
+                    st.info('Video ID copied to clipboard!')
             else:
                 st.warning('Please enter a valid YouTube URL')
 
