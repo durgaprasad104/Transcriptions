@@ -22,7 +22,7 @@ def main():
     url = st.text_input('Enter a YouTube URL')
 
     # Button to trigger video ID extraction
-    if st.button('Get Video ID'):
+    if st.button('DP i want my id'):
         if url:
             video_id = extract_youtube_video_id(url)
             if video_id:
