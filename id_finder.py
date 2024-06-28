@@ -21,12 +21,14 @@ def main():
     # Input field for the URL
     url = st.text_input('Enter a YouTube URL')
 
-    if url:
-        video_id = extract_youtube_video_id(url)
-        if video_id:
-            st.success(f'The extracted video ID is: {video_id}')
-        else:
-            st.warning('Please enter a valid YouTube URL')
+    # Button to trigger video ID extraction
+    if st.button('Get Video ID'):
+        if url:
+            video_id = extract_youtube_video_id(url)
+            if video_id:
+                st.success(f'The extracted video ID is: {video_id}')
+            else:
+                st.warning('Please enter a valid YouTube URL')
 
 if __name__ == "__main__":
     main()
