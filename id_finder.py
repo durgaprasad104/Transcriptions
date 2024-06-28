@@ -22,11 +22,11 @@ def main():
     url = st.text_input('Enter a YouTube URL')
 
     # Button to trigger video ID extraction
-    if st.button('DP i want my id'):
+    if st.button('Get video ID'):
         if url:
             video_id = extract_youtube_video_id(url)
             if video_id:
-                st.success(f' Idhugoo raa nii video ID : {video_id}')
+                st.success(f' here is your ID : {video_id}')
             else:
                 st.warning('Please enter a valid YouTube URL')
 
