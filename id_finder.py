@@ -16,7 +16,7 @@ def extract_youtube_video_id(url):
         return None
 
 def main():
-    st.title('idhugoo raa nii id : ')
+    st.title('Youtube Video ID Finder')
 
     # Input field for the URL
     url = st.text_input('Enter a YouTube URL')
@@ -26,7 +26,7 @@ def main():
         if url:
             video_id = extract_youtube_video_id(url)
             if video_id:
-                st.success(f'The extracted video ID is: {video_id}')
+                st.success(f' Idhugoo raa nii video ID : {video_id}')
             else:
                 st.warning('Please enter a valid YouTube URL')
 
