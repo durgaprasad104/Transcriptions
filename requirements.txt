@@ -1,3 +1,5 @@
 streamlit 
-pyperclip
 youtube_transcript_api
+yt-dlp
+googletrans==4.0.0-rc1 gtts moviepy
+
